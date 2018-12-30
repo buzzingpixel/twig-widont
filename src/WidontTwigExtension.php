@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace src\app\http\twigextensions;
+namespace buzzingpixel\twigwidont;
 
 use Twig_Filter;
 use Twig_Markup;
