@@ -9,15 +9,15 @@ declare(strict_types=1);
 
 namespace buzzingpixel\twigwidont;
 
-use Twig_Filter;
-use Twig_Markup;
-use Twig_Extension;
+use Twig\TwigFilter;
+use Twig\Markup;
+use Twig\Extension\AbstractExtension;
 
-class WidontTwigExtension extends Twig_Extension
+class WidontTwigExtension extends AbstractExtension
 {
     public function getFilters(): array
     {
-        return [new Twig_Filter('widont', [$this, 'widontFilter'])];
+        return [new TwigFilter('widont', [$this, 'widontFilter'])];
     }
 
     private function widont(string $str): string
@@ -28,8 +28,8 @@ class WidontTwigExtension extends Twig_Extension
         return preg_replace($widontTest, '$1&nbsp;$2', $str);
     }
 
-    public function widontFilter(string $str): Twig_Markup
+    public function widontFilter(string $str): Markup
     {
-        return new Twig_Markup($this->widont($str), 'UTF-8');
+        return new Markup($this->widont($str), 'UTF-8');
     }
 }
